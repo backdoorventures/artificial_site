@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔧 Fix: Add space between list and paragraph in prose */
+.prose ul + p,
+.prose ol + p {
+  margin-top: 1.25rem;
+}
+

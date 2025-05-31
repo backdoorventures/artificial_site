@@ -1,0 +1,36 @@
+baseURL = "https://artificial-site.pages.dev"
+languageCode = "en-us"
+title = "LaunchLayer"
+
+[params]
+  [params.homeInfoParams]
+    Title = "Launch Smarter"
+    Content = "Explore tools, platforms, and digital services built for creators, developers, and first-time launchers. All posts are optimized to help you make confident decisions and take fast action."
+
+  description = "LaunchLayer delivers actionable insights on hosting, tools, and platforms — optimized for creators, students, and digital builders."
+  logo = "logo.png"
+  socialImage = "social-preview.png"
+
+  defaultTheme = "auto"
+  ShowShareButtons = true
+  ShowReadingTime = true
+
+  [params.assets]
+    favicon = "favicon.ico"
+    disableFingerprinting = true
+
+[build]
+  publish = "public"
+  command = "hugo"
+
+[build.environment]
+  HUGO_VERSION = "0.146.0"
+
+[build.postCSS]
+  use = ["postcss"]
+  includePaths = ["assets/css"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

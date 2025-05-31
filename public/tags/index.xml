@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on LaunchLayer</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on LaunchLayer</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 30 May 2025 04:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Digital Marketing</title>
+      <link>http://localhost:1313/tags/digital-marketing/</link>
+      <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/digital-marketing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Free Funnel Software</title>
+      <link>http://localhost:1313/tags/free-funnel-software/</link>
+      <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/free-funnel-software/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Funnel Builder</title>
+      <link>http://localhost:1313/tags/funnel-builder/</link>
+      <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/funnel-builder/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Online Business</title>
+      <link>http://localhost:1313/tags/online-business/</link>
+      <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/online-business/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Systeme.io</title>
+      <link>http://localhost:1313/tags/systeme.io/</link>
+      <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/systeme.io/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Affiliate Marketing</title>
+      <link>http://localhost:1313/tags/affiliate-marketing/</link>
+      <pubDate>Mon, 26 May 2025 03:33:45 +0000</pubDate>
+      <guid>http://localhost:1313/tags/affiliate-marketing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hostinger</title>
+      <link>http://localhost:1313/tags/hostinger/</link>
+      <pubDate>Mon, 26 May 2025 03:33:45 +0000</pubDate>
+      <guid>http://localhost:1313/tags/hostinger/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SEO</title>
+      <link>http://localhost:1313/tags/seo/</link>
+      <pubDate>Mon, 26 May 2025 03:33:45 +0000</pubDate>
+      <guid>http://localhost:1313/tags/seo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Student Blogs</title>
+      <link>http://localhost:1313/tags/student-blogs/</link>
+      <pubDate>Mon, 26 May 2025 03:33:45 +0000</pubDate>
+      <guid>http://localhost:1313/tags/student-blogs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web Hosting</title>
+      <link>http://localhost:1313/tags/web-hosting/</link>
+      <pubDate>Mon, 26 May 2025 03:33:45 +0000</pubDate>
+      <guid>http://localhost:1313/tags/web-hosting/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

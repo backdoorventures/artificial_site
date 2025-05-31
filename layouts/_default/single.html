@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ .Title }}</title>
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #000;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .navbar-gradient {
+      background: linear-gradient(to bottom, #00ff73 0%, #000 100%);
+    }
+
+    .subscribe-button {
+      background-color: #00ff73;
+      color: #000 !important;
+      border: 2px solid #00ff73;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .subscribe-button:hover {
+      background-color: #fff;
+      color: #000 !important;
+      transform: scale(1.05);
+    }
+
+    .divider-line {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-link {
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    .logo-animated {
+      filter: drop-shadow(0 0 4px #00ff73);
+      animation: pulse 2.5s infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-animated:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0%, 100% { filter: drop-shadow(0 0 4px #00ff73); }
+      50% { filter: drop-shadow(0 0 10px #00ff73); }
+    }
+
+    .layout-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      max-width: 960px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      border: 2px solid rgba(0, 255, 115, 0.9);
+      padding: 3rem;
+      border-radius: 1rem;
+      flex: 1;
+      transition: border 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: #00ff73;
+    }
+
+    .sticky-affiliate {
+      position: fixed;
+      top: 157px;
+      left: 20px;
+      width: 16rem;
+      background-color: #00ff73;
+      color: black;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: min(0.9rem, 2.2vw);
+      padding: 0.8rem 1.2rem;
+      border-radius: 0.5rem;
+      white-space: normal;
+      word-break: break-word;
+      text-align: center;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .sticky-affiliate:hover {
+      background-color: white;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    .post-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    .post-date {
+      font-size: 0.95rem;
+      color: #bbb;
+      margin-bottom: 2rem;
+    }
+
+    .post-content {
+      font-size: 1.2rem;
+      line-height: 2;
+    }
+
+    .post-content p {
+      margin-bottom: 2rem;
+    }
+
+    .post-content h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .post-content h2,
+    .post-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .cta-button-bottom {
+      display: inline-block;
+      margin-top: 3rem;
+      background-color: #00ff73;
+      color: #000;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: min(0.9rem, 2.2vw);
+      padding: 0.8rem 1.6rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button-bottom:hover {
+      background-color: white;
+      color: black;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 1024px) {
+      .sticky-affiliate {
+        display: none;
+      }
+    }
+    
+    ::-webkit-scrollbar {
+width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+background-color: #00ff73;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+background-color: #000000;
+}
+  </style>
+</head>
+<body>
+  <!-- Sticky Header -->
+  <header class="sticky-header w-full text-white">
+    <div class="flex justify-between items-center px-10 pt-4 pb-2 bg-black">
+      <div class="flex items-center space-x-4 mx-auto">
+        <img src="/logo.png" alt="LaunchLayer Logo" class="h-10 w-auto logo-animated" />
+        <h1 class="text-4xl font-bold" style="color: #00ff73;">LaunchLayer</h1>
+      </div>
+      <a href="#" class="subscribe-button absolute top-4 right-10">SUBSCRIBE</a>
+    </div>
+    <div class="navbar-gradient">
+      <nav class="flex justify-center space-x-12 text-sm uppercase py-3">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/blog/" class="nav-link">Blog</a>
+        <a href="/videos/" class="nav-link">Videos</a>
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/contact/" class="nav-link">Contact</a>
+      </nav>
+      <div class="divider-line mx-10"></div>
+    </div>
+  </header>
+
+  <!-- Blog Section -->
+  <main class="layout-wrap relative">
+    <div class="relative w-full">
+
+      {{ with .Params.cta }}
+        {{ if or (eq .position "sticky") (eq .position "both") }}
+          <a href="{{ .url }}" class="sticky-affiliate">
+            {{ .text }}
+          </a>
+        {{ end }}
+      {{ end }}
+
+      <div class="card">
+        <h1 class="post-title">{{ .Title }}</h1>
+        <p class="post-date">Posted on {{ .Date.Format "January 2, 2006" }}</p>
+        <div class="post-content prose prose-invert max-w-none">
+          {{ .Content }}
+        </div>
+
+        {{ with .Params.cta }}
+          {{ if or (eq .position "bottom") (eq .position "both") }}
+            <div class="text-center">
+              <a href="{{ .url }}" class="cta-button-bottom">
+                {{ .text }}
+              </a>
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </main>
+</body>
+</html>
