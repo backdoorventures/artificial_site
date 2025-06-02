@@ -176,7 +176,7 @@
         formData.append("email", form.email.value);
         formData.append("name", form.name.value);
 
-        fetch("https://script.google.com/macros/s/AKfycbxXMi8j15WlgmmOyeKc_mDk2BJY0Qvi4ZwzIBkfIGSwc9nDSRQZ442Ix5u6m1jlys2Ehg/exec", {
+        fetch("https://launchlayer-subscribe.backdoordigitalventures.workers.dev", {
           method: "POST",
           body: formData,
           headers: { "Content-Type": "application/x-www-form-urlencoded" }

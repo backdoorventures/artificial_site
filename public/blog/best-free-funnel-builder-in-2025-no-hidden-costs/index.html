@@ -382,8 +382,7 @@ You can do everything in one place without paying for anything.</p>
       formData.append("email", form.email.value);
       formData.append("name", form.name.value);
 
-      fetch("https://script.google.com/macros/s/AKfycbxXMi8j15WlgmmOyeKc_mDk2BJY0Qvi4ZwzIBkfIGSwc9nDSRQZ442Ix5u6m1jlys2Ehg/exec", {
-        method: "POST",
+      fetch("https://launchlayer-subscribe.backdoordigitalventures.workers.dev", {
         body: formData,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
