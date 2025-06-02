@@ -34,3 +34,11 @@ title = "LaunchLayer"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+

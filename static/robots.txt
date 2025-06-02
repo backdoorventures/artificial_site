@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://artificial-site.pages.dev/sitemap.xml
