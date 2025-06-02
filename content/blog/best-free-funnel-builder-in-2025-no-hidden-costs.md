@@ -14,6 +14,17 @@ cta:
   position: both
 ---
 
+<style>
+.post-title {
+  font-size: 1.8rem;
+}
+@media (min-width: 768px) {
+  .post-title {
+    font-size: 2.5rem;
+  }
+}
+</style>
+
 Most **free funnel builders** are lying to you.  
 They claim it’s free, then hit you with limits, locked features, or surprise charges. You sign up and get stuck. Nothing moves unless you pay.
 
@@ -53,45 +64,45 @@ You are not locked out of anything important. You can build and launch today wit
 
 ## How it compares to other funnel tools
 
-<div class="overflow-x-auto mt-6 mb-10">
-  <table class="min-w-full table-auto border border-[#00ff73] text-left text-sm text-white">
+<div class="mt-6 mb-10 w-full">
+  <table class="w-full table-auto border border-[#00ff73] text-left text-sm text-white">
     <thead class="bg-gray-950 text-white">
       <tr>
-        <th class="px-4 py-3 border border-[#00ff73] font-bold">Feature</th>
-        <th class="px-4 py-3 border border-[#00ff73] font-bold">Systeme.io Free</th>
-        <th class="px-4 py-3 border border-[#00ff73] font-bold">Typical Free Plan</th>
+        <th class="px-2 py-2 border border-[#00ff73] font-bold text-xs sm:text-sm">Feature</th>
+        <th class="px-2 py-2 border border-[#00ff73] font-bold text-xs sm:text-sm">Systeme.io Free</th>
+        <th class="px-2 py-2 border border-[#00ff73] font-bold text-xs sm:text-sm">Typical Free Plan</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="px-4 py-3 border border-[#00ff73]">Funnels</td>
-        <td class="px-4 py-3 border border-[#00ff73] font-semibold text-[#00ff73]">Unlimited</td>
-        <td class="px-4 py-3 border border-[#00ff73] text-gray-300">1 funnel or page</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-xs sm:text-sm">Funnels</td>
+        <td class="px-2 py-2 border border-[#00ff73] font-semibold text-[#00ff73] text-xs sm:text-sm">Unlimited</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-gray-300 text-xs sm:text-sm">1 funnel or page</td>
       </tr>
       <tr>
-        <td class="px-4 py-3 border border-[#00ff73]">Email Marketing</td>
-        <td class="px-4 py-3 border border-[#00ff73] font-semibold text-[#00ff73]">Included</td>
-        <td class="px-4 py-3 border border-[#00ff73] text-gray-300">Limited or blocked</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-xs sm:text-sm">Email Marketing</td>
+        <td class="px-2 py-2 border border-[#00ff73] font-semibold text-[#00ff73] text-xs sm:text-sm">Included</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-gray-300 text-xs sm:text-sm">Limited or blocked</td>
       </tr>
       <tr>
-        <td class="px-4 py-3 border border-[#00ff73]">Templates</td>
-        <td class="px-4 py-3 border border-[#00ff73]">100 plus</td>
-        <td class="px-4 py-3 border border-[#00ff73] text-gray-300">Less than 10</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-xs sm:text-sm">Templates</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-xs sm:text-sm">100 plus</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-gray-300 text-xs sm:text-sm">Less than 10</td>
       </tr>
       <tr>
-        <td class="px-4 py-3 border border-[#00ff73]">Checkout Pages</td>
-        <td class="px-4 py-3 border border-[#00ff73] font-semibold text-[#00ff73]">Included</td>
-        <td class="px-4 py-3 border border-[#00ff73] text-gray-300">Premium only</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-xs sm:text-sm">Checkout Pages</td>
+        <td class="px-2 py-2 border border-[#00ff73] font-semibold text-[#00ff73] text-xs sm:text-sm">Included</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-gray-300 text-xs sm:text-sm">Premium only</td>
       </tr>
       <tr>
-        <td class="px-4 py-3 border border-[#00ff73]">Upsells and Downsells</td>
-        <td class="px-4 py-3 border border-[#00ff73] font-semibold text-[#00ff73]">Included</td>
-        <td class="px-4 py-3 border border-[#00ff73] text-gray-300">Blocked</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-xs sm:text-sm">Upsells and Downsells</td>
+        <td class="px-2 py-2 border border-[#00ff73] font-semibold text-[#00ff73] text-xs sm:text-sm">Included</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-gray-300 text-xs sm:text-sm">Blocked</td>
       </tr>
       <tr>
-        <td class="px-4 py-3 border border-[#00ff73]">Credit Card Needed</td>
-        <td class="px-4 py-3 border border-[#00ff73] font-semibold text-[#00ff73]">No</td>
-        <td class="px-4 py-3 border border-[#00ff73] text-gray-300">Yes</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-xs sm:text-sm">Credit Card Needed</td>
+        <td class="px-2 py-2 border border-[#00ff73] font-semibold text-[#00ff73] text-xs sm:text-sm">No</td>
+        <td class="px-2 py-2 border border-[#00ff73] text-gray-300 text-xs sm:text-sm">Yes</td>
       </tr>
     </tbody>
   </table>
