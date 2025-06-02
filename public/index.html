@@ -11,7 +11,8 @@
     <style>
       body {
         font-family: 'Montserrat', sans-serif;
-        background-color: #000000;
+        background-color: #000;
+        color: white;
         margin: 0;
         padding: 0;
         overflow-x: hidden;
@@ -24,7 +25,7 @@
       }
 
       .navbar-gradient {
-        background: linear-gradient(to bottom, #00ff73 0%, #000000 100%);
+        background: linear-gradient(to bottom, #00ff73 0%, #000 100%);
       }
 
       .glow-text {
@@ -34,7 +35,7 @@
       .subscribe-button,
       .cta-button {
         background-color: #00ff73;
-        color: #000000 !important;
+        color: #000 !important;
         border: 2px solid #00ff73;
         font-weight: bold;
         text-transform: uppercase;
@@ -45,8 +46,8 @@
 
       .subscribe-button:hover,
       .cta-button:hover {
-        background-color: #ffffff;
-        color: #000000 !important;
+        background-color: #fff;
+        color: #000 !important;
         transform: scale(1.05);
       }
 
@@ -107,7 +108,7 @@
       }
 
       ::-webkit-scrollbar-track {
-        background-color: #000000;
+        background-color: #000;
       }
     </style>
   </head>
@@ -119,7 +120,7 @@
           <img src="/logo.png" alt="LaunchLayer Logo" class="h-10 w-auto logo-animated" />
           <h1 class="text-2xl md:text-4xl glow-text font-bold" style="color: #00ff73;">LaunchLayer</h1>
         </div>
-        <a href="#" class="subscribe-button">SUBSCRIBE</a>
+        <a href="#" id="subscribeBtn" class="subscribe-button">SUBSCRIBE</a>
       </div>
 
       <div class="navbar-gradient">
@@ -154,5 +155,62 @@
         </div>
       </section>
     </main>
+
+    
+    <div id="subscribeModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center px-4">
+      <div class="bg-black border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] text-white relative p-6" style="width: 100%; max-width: 420px;">
+        <button onclick="toggleModal()" class="absolute top-3 right-4 text-[#00ff73] text-2xl font-bold hover:scale-125 transition leading-none">&times;</button>
+        <div class="text-center mb-6">
+          <h2 class="text-2xl font-bold text-[#00ff73] mb-2">Unlock Your Digital Edge.</h2>
+          <p class="text-sm text-gray-300">Join the LaunchLayer inner circle. Real tools. Real value.</p>
+        </div>
+        <form id="subscribeForm" class="flex flex-col gap-4">
+          <input type="email" name="email" placeholder="Enter your email" required class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
+          <input type="text" name="name" placeholder="Your name (optional)" class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
+          <button type="submit" class="bg-[#00ff73] hover:bg-[#00e866] text-black font-bold uppercase py-3 rounded-md shadow-md hover:shadow-lg transition-all">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    
+    <script>
+      const subscribeBtn = document.getElementById("subscribeBtn");
+      const modal = document.getElementById("subscribeModal");
+      const form = document.getElementById("subscribeForm");
+
+      function toggleModal() {
+        modal.classList.toggle("hidden");
+      }
+
+      subscribeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleModal();
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new URLSearchParams();
+        formData.append("email", form.email.value);
+        formData.append("name", form.name.value);
+
+        fetch("https://script.google.com/macros/s/AKfycbxXMi8j15WlgmmOyeKc_mDk2BJY0Qvi4ZwzIBkfIGSwc9nDSRQZ442Ix5u6m1jlys2Ehg/exec", {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          }
+        })
+        .then(res => res.text())
+        .then(response => {
+          alert("✅ " + response);
+          form.reset();
+          toggleModal();
+        })
+        .catch(err => {
+          alert("❌ Error: " + err.message);
+        });
+      });
+    </script>
   </body>
 </html>

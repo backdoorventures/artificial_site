@@ -77,6 +77,15 @@
         50% { filter: drop-shadow(0 0 10px #00ff73); }
       }
 
+      @keyframes fade-in {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      .animate-fade-in {
+        animation: fade-in 0.3s ease-out;
+      }
+
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -106,10 +115,10 @@
       </div>
 
       <div class="navbar-gradient">
-       <nav class="flex justify-center items-center overflow-x-auto px-4 py-3 uppercase text-sm">
-  <a href="/" class="nav-link" style="margin-right: 40px;">HOME</a>
-  <a href="/blog/" class="nav-link">BLOG</a>
-</nav>
+        <nav class="flex justify-center items-center overflow-x-auto px-4 py-3 uppercase text-sm">
+          <a href="/" class="nav-link" style="margin-right: 40px;">HOME</a>
+          <a href="/blog/" class="nav-link">BLOG</a>
+        </nav>
         <div class="divider-line mx-4 md:mx-10"></div>
       </div>
     </header>
@@ -139,5 +148,71 @@
 </section>
 
     </main>
+
+    
+<div id="subscribeWrapper" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center px-4">
+  <div class="bg-[#000] border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] animate-fade-in text-white relative p-6" style="width: 100%; max-width: 420px;">
+
+    
+    <button onclick="toggleSubscribe()" class="absolute top-3 right-4 text-[#00ff73] text-2xl font-bold hover:scale-125 transition leading-none">&times;</button>
+
+    
+    <div class="text-center mb-6">
+      <h2 class="text-2xl font-bold text-[#00ff73] mb-2">Unlock Your Digital Edge.</h2>
+      <p class="text-sm text-gray-300">Join the LaunchLayer inner circle. Real tools. Real value.</p>
+    </div>
+
+    
+    <form id="subscribeForm" class="flex flex-col gap-4">
+      <input type="email" name="email" placeholder="Enter your email" required
+             class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00ff73]" />
+      <input type="text" name="name" placeholder="Your name (optional)"
+             class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00ff73]" />
+      <button type="submit"
+              class="bg-[#00ff73] hover:bg-[#00e866] text-black font-bold uppercase py-3 rounded-md shadow-md hover:shadow-lg transition-all tracking-wide">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</div>
+
+
+    
+    <script>
+      const form = document.getElementById("subscribeForm");
+      const wrapper = document.getElementById("subscribeWrapper");
+
+      function toggleSubscribe() {
+        wrapper.classList.toggle("hidden");
+      }
+
+      document.querySelector(".subscribe-button").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleSubscribe();
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new URLSearchParams();
+        formData.append("email", form.email.value);
+        formData.append("name", form.name.value);
+
+        fetch("https://script.google.com/macros/s/AKfycbxXMi8j15WlgmmOyeKc_mDk2BJY0Qvi4ZwzIBkfIGSwc9nDSRQZ442Ix5u6m1jlys2Ehg/exec", {
+          method: "POST",
+          body: formData,
+          headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        }).then(res => res.text())
+          .then(response => {
+            alert("✅ " + response);
+            form.reset();
+            toggleSubscribe();
+          })
+          .catch(err => {
+            alert("❌ Error: " + err.message);
+          });
+      });
+    </script>
   </body>
 </html>
+
