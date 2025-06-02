@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Systeme.io on LaunchLayer</title>
-    <link>https://artificial-site.pages.dev/tags/systeme.io/</link>
+    <link>http://localhost:1313/tags/systeme.io/</link>
     <description>Recent content in Systeme.io on LaunchLayer</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 30 May 2025 04:00:00 +0000</lastBuildDate>
-    <atom:link href="https://artificial-site.pages.dev/tags/systeme.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/systeme.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Best Free Funnel Builder in 2025 (No Hidden Costs)</title>
-      <link>https://artificial-site.pages.dev/blog/best-free-funnel-builder-in-2025-no-hidden-costs/</link>
+      <link>http://localhost:1313/blog/best-free-funnel-builder-in-2025-no-hidden-costs/</link>
       <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
-      <guid>https://artificial-site.pages.dev/blog/best-free-funnel-builder-in-2025-no-hidden-costs/</guid>
+      <guid>http://localhost:1313/blog/best-free-funnel-builder-in-2025-no-hidden-costs/</guid>
       <description>Looking for a legit free funnel builder in 2025? Here’s the best no-BS option that actually works and costs nothing to start.</description>
     </item>
   </channel>

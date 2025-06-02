@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on LaunchLayer</title>
-    <link>https://artificial-site.pages.dev/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on LaunchLayer</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 30 May 2025 04:00:00 +0000</lastBuildDate>
-    <atom:link href="https://artificial-site.pages.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Digital Marketing</title>
-      <link>https://artificial-site.pages.dev/tags/digital-marketing/</link>
+      <link>http://localhost:1313/tags/digital-marketing/</link>
       <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
-      <guid>https://artificial-site.pages.dev/tags/digital-marketing/</guid>
+      <guid>http://localhost:1313/tags/digital-marketing/</guid>
       <description></description>
     </item>
     <item>
       <title>Free Funnel Software</title>
-      <link>https://artificial-site.pages.dev/tags/free-funnel-software/</link>
+      <link>http://localhost:1313/tags/free-funnel-software/</link>
       <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
-      <guid>https://artificial-site.pages.dev/tags/free-funnel-software/</guid>
+      <guid>http://localhost:1313/tags/free-funnel-software/</guid>
       <description></description>
     </item>
     <item>
       <title>Funnel Builder</title>
-      <link>https://artificial-site.pages.dev/tags/funnel-builder/</link>
+      <link>http://localhost:1313/tags/funnel-builder/</link>
       <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
-      <guid>https://artificial-site.pages.dev/tags/funnel-builder/</guid>
+      <guid>http://localhost:1313/tags/funnel-builder/</guid>
       <description></description>
     </item>
     <item>
       <title>Online Business</title>
-      <link>https://artificial-site.pages.dev/tags/online-business/</link>
+      <link>http://localhost:1313/tags/online-business/</link>
       <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
-      <guid>https://artificial-site.pages.dev/tags/online-business/</guid>
+      <guid>http://localhost:1313/tags/online-business/</guid>
       <description></description>
     </item>
     <item>
       <title>Systeme.io</title>
-      <link>https://artificial-site.pages.dev/tags/systeme.io/</link>
+      <link>http://localhost:1313/tags/systeme.io/</link>
       <pubDate>Fri, 30 May 2025 04:00:00 +0000</pubDate>
-      <guid>https://artificial-site.pages.dev/tags/systeme.io/</guid>
+      <guid>http://localhost:1313/tags/systeme.io/</guid>
       <description></description>
     </item>
   </channel>
