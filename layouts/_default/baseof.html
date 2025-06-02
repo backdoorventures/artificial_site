@@ -93,40 +93,29 @@
   </head>
 
   <body>
-  <!-- Sticky Header -->
+    <!-- Sticky Header -->
     <header class="sticky-header w-full text-white">
-    <div class="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 pt-4 pb-2 bg-black relative">
-    <div class="flex items-center space-x-3 md:space-x-4 mb-2 md:mb-0">
-      <img src="/logo.png" alt="LaunchLayer Logo" class="h-10 w-auto logo-animated" />
-      <h1 class="text-2xl md:text-4xl glow-text font-bold text-center" style="color: #00ff73;">LaunchLayer</h1>
-    </div>
-    <a href="#" class="subscribe-button mt-2 md:mt-0 md:absolute md:top-4 md:right-10">SUBSCRIBE</a>
-    </div>
+      <div class="w-full flex items-center justify-between px-4 md:px-10 pt-4 pb-2 bg-black">
+        <!-- Logo + Name -->
+        <div class="flex items-center space-x-3 md:space-x-4">
+          <img src="/logo.png" alt="LaunchLayer Logo" class="h-10 w-auto logo-animated" />
+          <h1 class="text-2xl md:text-4xl glow-text font-bold" style="color: #00ff73;">LaunchLayer</h1>
+        </div>
+        <!-- Subscribe Button -->
+        <a href="#" class="subscribe-button">SUBSCRIBE</a>
+      </div>
 
-    <div class="navbar-gradient">
-    <nav class="flex flex-wrap justify-center space-x-6 sm:space-x-10 text-sm uppercase py-3 overflow-x-auto">
-      <a href="/" class="nav-link whitespace-nowrap">Home</a>
-      <a href="/blog/" class="nav-link whitespace-nowrap">Blog</a>
-    </nav>
-    <div class="divider-line mx-4 md:mx-10"></div>
-  </div>
-</header>
-
+      <div class="navbar-gradient">
+        <nav class="flex flex-wrap justify-center gap-x-10 text-sm uppercase py-3 px-4 overflow-x-auto">
+          <a href="/" class="nav-link whitespace-nowrap">Home</a>
+          <a href="/blog/" class="nav-link whitespace-nowrap">Blog</a>
+        </nav>
+        <div class="divider-line mx-4 md:mx-10"></div>
+      </div>
+    </header>
 
     <main class="px-4 py-6 md:px-10">
       {{ block "main" . }}{{ end }}
     </main>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
