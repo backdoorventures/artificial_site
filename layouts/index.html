@@ -109,10 +109,31 @@
       ::-webkit-scrollbar-track {
         background-color: #000;
       }
+
+      .shake {
+        animation: shake 0.4s;
+      }
+
+      @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-8px); }
+        50% { transform: translateX(8px); }
+        75% { transform: translateX(-6px); }
+        100% { transform: translateX(0); }
+      }
+
+      .flash-success {
+        animation: flash 1s ease-in-out;
+      }
+
+      @keyframes flash {
+        0% { box-shadow: 0 0 0px #00ff73; }
+        50% { box-shadow: 0 0 25px #00ff73; }
+        100% { box-shadow: 0 0 0px #00ff73; }
+      }
     </style>
   </head>
   <body>
-    <!-- Sticky Header -->
     <header class="sticky-header w-full text-white">
       <div class="w-full flex items-center justify-between px-4 md:px-10 pt-4 pb-2 bg-black">
         <div class="flex items-center space-x-3 md:space-x-4">
@@ -131,13 +152,10 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
     <main>
       <section class="w-full h-[90vh] relative fade-in overflow-hidden">
         <img src="/hero-bg.png" alt="LaunchLayer Hero Background" class="absolute inset-0 w-full h-full object-cover z-0 brightness-125" />
         <div class="vignette"></div>
-
-        <!-- Text Block -->
         <div class="absolute top-[15%] left-6 md:left-10 z-20 max-w-[480px] px-2 md:px-0">
           <h2 class="text-4xl md:text-[2.5rem] font-bold text-white leading-[1.2] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
             LaunchLayer is a<br />
@@ -157,29 +175,37 @@
 
     <!-- Subscribe Modal -->
     <div id="subscribeModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center px-4">
-      <div class="bg-black border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] text-white relative p-6" style="width: 100%; max-width: 420px;">
+      <div id="modalBox" class="bg-black border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] text-white relative p-6" style="width: 100%; max-width: 420px;">
         <button onclick="toggleModal()" class="absolute top-3 right-4 text-[#00ff73] text-2xl font-bold hover:scale-125 transition leading-none">&times;</button>
         <div class="text-center mb-6">
           <h2 class="text-2xl font-bold text-[#00ff73] mb-2">Unlock Your Digital Edge.</h2>
           <p class="text-sm text-gray-300">Join the LaunchLayer inner circle. Real tools. Real value.</p>
         </div>
         <form id="subscribeForm" class="flex flex-col gap-4">
-          <input type="email" name="email" placeholder="Enter your email" required class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
+          <input autofocus type="email" name="email" placeholder="Enter your email" required class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
           <input type="text" name="name" placeholder="Your name (optional)" class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
           <button type="submit" class="bg-[#00ff73] hover:bg-[#00e866] text-black font-bold uppercase py-3 rounded-md shadow-md hover:shadow-lg transition-all">Subscribe</button>
         </form>
       </div>
     </div>
 
-    <!-- JS Logic -->
+    <!-- JS -->
     <script>
       const subscribeBtn = document.getElementById("subscribeBtn");
       const modal = document.getElementById("subscribeModal");
       const form = document.getElementById("subscribeForm");
+      const modalBox = document.getElementById("modalBox");
 
       function toggleModal() {
         modal.classList.toggle("hidden");
+        if (!modal.classList.contains("hidden")) {
+          setTimeout(() => form.email.focus(), 100);
+        }
       }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modal.classList.contains("hidden")) toggleModal();
+      });
 
       subscribeBtn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -188,7 +214,6 @@
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-
         const formData = new URLSearchParams();
         formData.append("email", form.email.value);
         formData.append("name", form.name.value);
@@ -196,17 +221,19 @@
         fetch("https://launchlayer-subscribe.backdoordigitalventures.workers.dev", {
           method: "POST",
           body: formData,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          }
+          headers: { "Content-Type": "application/x-www-form-urlencoded" }
         })
         .then(res => res.text())
         .then(response => {
+          modalBox.classList.add("flash-success");
+          setTimeout(() => modalBox.classList.remove("flash-success"), 1000);
           alert("✅ " + response);
           form.reset();
           toggleModal();
         })
         .catch(err => {
+          modalBox.classList.add("shake");
+          setTimeout(() => modalBox.classList.remove("shake"), 400);
           alert("❌ Error: " + err.message);
         });
       });
