@@ -131,6 +131,15 @@
         50% { box-shadow: 0 0 25px #00ff73; }
         100% { box-shadow: 0 0 0px #00ff73; }
       }
+      .flash-success {
+  animation: flashSuccess 1s ease-in-out;
+}
+
+@keyframes flashSuccess {
+  0%   { box-shadow: 0 0 0px #00ff73; }
+  50%  { box-shadow: 0 0 25px #00ff73; }
+  100% { box-shadow: 0 0 0px #00ff73; }
+}
     </style>
   </head>
   <body>
@@ -156,72 +165,91 @@
       {{ block "main" . }}{{ end }}
     </main>
 
-    <!-- ✅ Final Fixed Subscribe Modal -->
-    <div id="subscribeModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
-      <div id="modalBox" class="bg-black border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] text-white relative p-6 max-w-[420px] w-[90%] animate-fade-in">
-        <button onclick="toggleModal()" class="absolute top-3 right-4 text-[#00ff73] text-2xl font-bold hover:scale-125 transition leading-none">&times;</button>
-        <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold text-[#00ff73] mb-2">Unlock Your Digital Edge.</h2>
-          <p class="text-sm text-gray-300">Join the LaunchLayer inner circle. Real tools. Real value.</p>
-        </div>
-        <form id="subscribeForm" class="flex flex-col gap-4">
-          <input autofocus type="email" name="email" placeholder="Enter your email" required class="w-full px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
-          <input type="text" name="name" placeholder="Your name (optional)" class="w-full px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
-          <button type="submit" class="bg-[#00ff73] hover:bg-[#00e866] text-black font-bold uppercase py-3 rounded-md shadow-md hover:shadow-lg transition-all">
-            Subscribe
-          </button>
-        </form>
-      </div>
+<!-- ✅ Synced Subscribe Modal -->
+<div id="subscribeModal" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
+  <div id="modalBox" class="bg-black border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] text-white relative p-6 max-w-[420px] w-[90%] animate-fade-in">
+    <button onclick="toggleModal()" class="absolute top-3 right-4 text-[#00ff73] text-2xl font-bold hover:scale-125 transition leading-none">&times;</button>
+    <div class="text-center mb-6">
+      <h2 class="text-2xl font-bold text-[#00ff73] mb-2">Unlock Your Digital Edge.</h2>
+      <p class="text-sm text-gray-300">Join the LaunchLayer inner circle. Real tools. Real value.</p>
     </div>
+    <form id="subscribeForm" class="flex flex-col gap-4">
+      <input autofocus type="email" name="email" placeholder="Enter your email" required class="w-full px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
+      <input type="text" name="name" placeholder="Your name (optional)" class="w-full px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400" />
+      <button type="submit" class="bg-[#00ff73] hover:bg-[#00e866] text-black font-bold uppercase py-3 rounded-md shadow-md hover:shadow-lg transition-all">
+        Subscribe
+      </button>
+      <div id="subscribeMessage" class="text-center text-sm font-bold mt-2"></div>
+    </form>
+  </div>
+</div>
 
-    <!-- JS -->
-    <script>
-      const subscribeBtn = document.getElementById("subscribeBtn");
-      const modal = document.getElementById("subscribeModal");
-      const form = document.getElementById("subscribeForm");
-      const modalBox = document.getElementById("modalBox");
+<!-- JS -->
+<script>
+  const modal = document.getElementById("subscribeModal");
+  const modalBox = document.getElementById("modalBox");
+  const form = document.getElementById("subscribeForm");
+  const messageBox = document.getElementById("subscribeMessage");
 
-      function toggleModal() {
-        modal.classList.toggle("hidden");
-        if (!modal.classList.contains("hidden")) {
-          setTimeout(() => form.email.focus(), 100);
-        }
-      }
+  function toggleModal() {
+    modal.classList.toggle("hidden");
+    messageBox.textContent = "";
+    messageBox.className = "text-center text-sm font-bold mt-2";
+    if (!modal.classList.contains("hidden")) {
+      setTimeout(() => form.email.focus(), 100);
+    }
+  }
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && !modal.classList.contains("hidden")) toggleModal();
-      });
-
+  window.addEventListener("DOMContentLoaded", () => {
+    const subscribeBtn = document.querySelector(".subscribe-button");
+    if (subscribeBtn) {
       subscribeBtn.addEventListener("click", function (e) {
         e.preventDefault();
         toggleModal();
       });
+    }
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const formData = new URLSearchParams();
-        formData.append("email", form.email.value);
-        formData.append("name", form.name.value);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) toggleModal();
+    });
 
-        fetch("https://launchlayer-subscribe.backdoordigitalventures.workers.dev", {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const payload = {
+        email: form.email.value.trim(),
+        name: form.name.value.trim()
+      };
+
+      try {
+        const res = await fetch("https://launchlayer-subscribe.backdoordigitalventures.workers.dev", {
           method: "POST",
-          body: formData,
-          headers: { "Content-Type": "application/x-www-form-urlencoded" }
-        })
-        .then(res => res.text())
-        .then(response => {
-          modalBox.classList.add("flash-success");
-          setTimeout(() => modalBox.classList.remove("flash-success"), 1000);
-          alert("✅ " + response);
-          form.reset();
-          toggleModal();
-        })
-        .catch(err => {
-          modalBox.classList.add("shake");
-          setTimeout(() => modalBox.classList.remove("shake"), 400);
-          alert("❌ Error: " + err.message);
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
         });
-      });
-    </script>
+
+        if (!res.ok) throw new Error(await res.text());
+
+        messageBox.textContent = "✅ Email submitted.";
+        messageBox.classList.add("text-green-400");
+        modalBox.classList.add("flash-success");
+
+        setTimeout(() => {
+          modalBox.classList.remove("flash-success");
+          toggleModal();
+        }, 2000);
+
+        form.reset();
+      } catch (err) {
+        messageBox.textContent = "❌ " + err.message;
+        messageBox.classList.add("text-red-400");
+        modalBox.classList.add("shake");
+        setTimeout(() => modalBox.classList.remove("shake"), 400);
+      }
+    });
+  });
+</script>
   </body>
 </html>

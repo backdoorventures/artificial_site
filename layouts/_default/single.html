@@ -194,6 +194,15 @@
     ::-webkit-scrollbar-track {
       background-color: #000000;
     }
+    .flash-success {
+  animation: flashSuccess 1s ease-in-out;
+}
+
+@keyframes flashSuccess {
+  0%   { box-shadow: 0 0 0px #00ff73; }
+  50%  { box-shadow: 0 0 25px #00ff73; }
+  100% { box-shadow: 0 0 0px #00ff73; }
+}
   </style>
 </head>
 <body>
@@ -246,60 +255,82 @@
     </div>
   </main>
 
-  <!-- Subscribe Modal -->
-  <div id="subscribeWrapper" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center px-4">
-    <div class="bg-[#000] border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] animate-fade-in text-white relative p-6" style="width: 100%; max-width: 420px;">
-      <button onclick="toggleSubscribe()" class="absolute top-3 right-4 text-[#00ff73] text-2xl font-bold hover:scale-125 transition leading-none">&times;</button>
-      <div class="text-center mb-6">
-        <h2 class="text-2xl font-bold text-[#00ff73] mb-2">Unlock Your Digital Edge.</h2>
-        <p class="text-sm text-gray-300">Join the LaunchLayer inner circle. No spam. Just leverage.</p>
-      </div>
-      <form id="subscribeForm" class="flex flex-col gap-4">
-        <input type="email" name="email" placeholder="Enter your email" required class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00ff73]" />
-        <input type="text" name="name" placeholder="Your name (optional)" class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00ff73]" />
-        <button type="submit" class="bg-[#00ff73] hover:bg-[#00e866] text-black font-bold uppercase py-3 rounded-md shadow-md hover:shadow-lg transition-all tracking-wide">Subscribe</button>
-      </form>
+<!-- Subscribe Modal -->
+<div id="subscribeWrapper" class="hidden fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center px-4">
+  <div id="modalBox" class="bg-[#000] border-2 border-[#00ff73] rounded-[16px] shadow-[0_0_25px_#00ff73] text-white relative p-6 max-w-[420px] w-[90%] animate-fade-in">
+    <button onclick="toggleSubscribe()" class="absolute top-3 right-4 text-[#00ff73] text-2xl font-bold hover:scale-125 transition leading-none">&times;</button>
+    <div class="text-center mb-6">
+      <h2 class="text-2xl font-bold text-[#00ff73] mb-2">Unlock Your Digital Edge.</h2>
+      <p class="text-sm text-gray-300">Join the LaunchLayer inner circle. No spam. Just leverage.</p>
     </div>
+    <form id="subscribeForm" class="flex flex-col gap-4">
+      <input type="email" name="email" placeholder="Enter your email" required class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00ff73]" />
+      <input type="text" name="name" placeholder="Your name (optional)" class="px-4 py-3 rounded-md border border-[#00ff73] bg-black text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#00ff73]" />
+      <button type="submit" class="bg-[#00ff73] hover:bg-[#00e866] text-black font-bold uppercase py-3 rounded-md shadow-md hover:shadow-lg transition-all tracking-wide">Subscribe</button>
+      <div id="subscribeMessage" class="text-center text-sm font-bold mt-2"></div>
+    </form>
   </div>
+</div>
 
-  <!-- Modal Script -->
-  <script>
-    const form = document.getElementById("subscribeForm");
-    const wrapper = document.getElementById("subscribeWrapper");
+<!-- Modal Script -->
+<script>
+  const form = document.getElementById("subscribeForm");
+  const wrapper = document.getElementById("subscribeWrapper");
+  const messageBox = document.getElementById("subscribeMessage");
+  const modalBox = document.getElementById("modalBox"); // ✅ Add this
 
-    function toggleSubscribe() {
-      wrapper.classList.toggle("hidden");
+  function toggleSubscribe() {
+    wrapper.classList.toggle("hidden");
+    messageBox.textContent = "";
+    messageBox.className = "text-center text-sm font-bold mt-2";
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const subscribeBtn = document.querySelector(".subscribe-button");
+
+    if (subscribeBtn) {
+      subscribeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleSubscribe();
+      });
     }
 
-    document.querySelector(".subscribe-button").addEventListener("click", function (e) {
-      e.preventDefault();
-      toggleSubscribe();
-    });
-
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const formData = new URLSearchParams();
-      formData.append("email", form.email.value);
-      formData.append("name", form.name.value);
+      const payload = {
+        email: form.email.value.trim(),
+        name: form.name.value.trim()
+      };
 
-      fetch("https://launchlayer-subscribe.backdoordigitalventures.workers.dev", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
-      })
-      .then(res => res.text())
-      .then(response => {
-        alert("✅ " + response);
+      try {
+        const res = await fetch("https://launchlayer-subscribe.backdoordigitalventures.workers.dev", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error(await res.text());
+
+        messageBox.textContent = "✅ Email submitted.";
+        messageBox.classList.add("text-green-400");
+
+        modalBox.classList.add("flash-success"); // ✅ Glow effect here
+        setTimeout(() => {
+          modalBox.classList.remove("flash-success");
+          toggleSubscribe();
+        }, 2000);
+
         form.reset();
-        toggleSubscribe();
-      })
-      .catch(err => {
-        alert("❌ Error: " + err.message);
-      });
+
+      } catch (err) {
+        messageBox.textContent = "❌ " + err.message;
+        messageBox.classList.add("text-red-400");
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
