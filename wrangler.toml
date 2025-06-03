@@ -1,0 +1,6 @@
+name = "launchlayer-subscribe"
+main = "worker/index.js"
+compatibility_date = "2025-06-02"
+account_id = "63d76daff81c97be79aad1ff4e2c2d48"
+
+
