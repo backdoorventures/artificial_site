@@ -1,6 +1,7 @@
 ---
 title: Best Free Funnel Builder in 2025 (No Hidden Costs)
 date: 2025-05-30T04:00:00Z
+type: page
 tags:
   - funnel builder
   - free funnel software
