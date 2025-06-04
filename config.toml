@@ -1,4 +1,4 @@
-baseURL = "https://artificial-site.pages.dev"
+baseURL = "https://launchlayer.tech/"
 languageCode = "en-us"
 title = "LaunchLayer"
 
@@ -41,4 +41,7 @@ enableRobotsTXT = true
   changefreq = "monthly"
   priority = 0.5
   filename = "sitemap.xml"
+
+[outputs]
+home = ["HTML", "RSS", "SITEMAP"]
 
