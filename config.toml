@@ -1,6 +1,7 @@
 baseURL = "https://launchlayer.tech/"
 languageCode = "en-us"
 title = "LaunchLayer"
+enableRobotsTXT = true
 
 [params]
   [params.homeInfoParams]
@@ -10,7 +11,6 @@ title = "LaunchLayer"
   description = "LaunchLayer delivers actionable insights on hosting, tools, and platforms — optimized for creators, students, and digital builders."
   logo = "logo.png"
   socialImage = "social-preview.png"
-
   defaultTheme = "auto"
   ShowShareButtons = true
   ShowReadingTime = true
@@ -35,8 +35,6 @@ title = "LaunchLayer"
     [markup.goldmark.renderer]
       unsafe = true
 
-enableRobotsTXT = true
-
 [sitemap]
   changefreq = "monthly"
   priority = 0.5
@@ -46,4 +44,14 @@ enableRobotsTXT = true
 home = ["HTML", "RSS", "SITEMAP"]
 page = ["HTML"]
 section = ["HTML", "RSS"]
+taxonomy = ["HTML"]
+taxonomyTerm = ["HTML"]
 
+[mediaTypes."application/xml"]
+suffixes = ["xml"]
+
+[outputFormats.SITEMAP]
+mediaType = "application/xml"
+baseName = "sitemap"
+isPlainText = true
+notAlternative = true
